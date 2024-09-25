@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{ route('buku.create') }}" class="btn btn-primary float-end">Tambah Buku</a>
+    <table class="table table-stripped">
     <h1>Daftar Buku</h1>
     <table border="1">
         <thead>
@@ -30,7 +32,15 @@
                     <td>{{ $book->creator }}</td>
                     <td>{{"Rp. ".number_format($book->price, 2, ',', '.') }}</td>
                     <td>{{ \Carbon\Carbon::parse($book->publication_date)->format('d-m-Y') }}</td>
-                    <td>Edit</td>
+                    <td>
+                    <form action="{{ route('buku.destroy', $book->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Sure you want to DELETE?')" type="submit"
+                            class="btn btn-danger">Delete</button>
+                        </form>
+                        <a href="{{ route('buku.edit', $book->id)}}">Edit</a>
+                    </td>  
                 </tr>
             @endforeach
         </tbody>
