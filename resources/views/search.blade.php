@@ -10,6 +10,11 @@
 <body>
     <a href="{{ route('buku.create') }}" class="btn btn-primary float-end">Tambah Buku</a>
     <a href="{{ route('buku.view') }}" class="btn btn-primary float-end">kembali</a>
+    @if (@session('status'))
+            <script>
+                alert('{{ session('status') }}');
+            </script>
+        @endif
     <h1>Daftar Buku</h1>
     <table class="table table-bordered">
         <thead>

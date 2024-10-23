@@ -18,6 +18,11 @@
                 <input type="text" class="form-control" placeholder="Cari buku" name="search">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
+            @if (@session('status'))
+            <script>
+                alert('{{ session('status') }}');
+            </script>
+        @endif
            
     <h1>Daftar Buku</h1>
     <table class="table table-bordered">

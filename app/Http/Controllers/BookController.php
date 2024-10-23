@@ -32,19 +32,19 @@ class BookController extends Controller
         $buku->publication_date = $request->publication_date;
         $buku->save();
 
-        return redirect('bookView');
+        return redirect('bookView')->with('status', 'Data Buku Berhasil Disimpan');
     }
 
     public function destroy($id){
         $buku = Book::find($id);
         $buku->delete();
 
-        return redirect('bookView');
+        return redirect('bookView')->with('status', 'Data Buku Berhasil Dihapus');
     }
 
     public function edit($id){
         $buku = Book::find($id);
-        return view('update', compact('buku'));
+        return view('update', compact('buku'))->with('status', 'Data Buku Berhasil Diedit');
     }
 
     public function update(Request $request, $id){
@@ -52,7 +52,7 @@ class BookController extends Controller
         $buku->title = $request->input('title');
         $buku->creator = $request->input('creator');
         $buku->price = $request->input('price');
-        $buku->publication_date = $request->input('publication_date');
+        $buku->publication_date = $request->input('publication_date')->with('status', 'Data Buku Berhasil Diupdate');
 
         return redirect('/bookView');
 
