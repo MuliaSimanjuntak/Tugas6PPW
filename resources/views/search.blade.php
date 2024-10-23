@@ -8,17 +8,8 @@
 
 </head>
 <body>
-    <div class="container mt-5">
-        <div class = "mb-5">
-            <a href="{{ route('buku.create') }}" class="btn btn-primary float-end">Tambah Buku</a>
-        </div>
-        <form action="{{route('search.book')}}" method="GET">
-            @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Cari buku" name="search">
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
-            </div>
-           
+    <a href="{{ route('buku.create') }}" class="btn btn-primary float-end">Tambah Buku</a>
+    <a href="{{ route('buku.view') }}" class="btn btn-primary float-end">kembali</a>
     <h1>Daftar Buku</h1>
     <table class="table table-bordered">
         <thead>
@@ -56,11 +47,13 @@
         </tbody>
     </table>
 
-    <div>
-    {{ $data_book->links('pagination::bootstrap-5') }}</div>
+    <div class="d-flex justify-content-center mt-4">
+            {{ $data_book->links('pagination::bootstrap-5') }}
+        </div>
+
     <h3>Jumlah Buku : {{ $jumlahBuku }}</h3>
     <h3>Total Harga : {{"Rp. ".number_format($totalPrice, 2, ',', '.') }}</h3>
-</div>
+
     
 </body>
 </html>

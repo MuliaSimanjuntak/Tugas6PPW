@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 </head>
 <body class="bg-gray-100 p-8">
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
@@ -15,37 +17,29 @@
                 @csrf
                 @method('PUT')
         
-            <!-- Input untuk Judul -->
-            <div class="mb-4">
-                <label for="title" class="block text-gray-700 font-bold mb-2">Judul:</label>
-                <input type="text" name="title" id="title" class="w-full px-3 py-2 border border-gray-300 rounded-lg" value="{{ old('title', $buku->title) }}" required>
-            </div>
+                <h2 class="text-center">Edit Buku</h2>
+            <input type="hidden" class="form-control" id="id" name="id" value="{{ $buku->id }}">
 
-            <!-- Input untuk Penulis -->
-            <div class="mb-4">
-                <label for="author" class="block text-gray-700 font-bold mb-2">Penulis:</label>
-                <input type="text" name="author" id="author" class="w-full px-3 py-2 border border-gray-300 rounded-lg" value="{{ old('author', $buku->creator) }}" required>
+            <div class="mb-3">
+                <label for="title" class="form-label">Judul</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ $buku->title }}" required>
             </div>
-
-            <!-- Input untuk Harga -->
-            <div class="mb-4">
-                <label for="harga" class="block text-gray-700 font-bold mb-2">Harga:</label>
-                <input type="number" name="harga" id="harga" class="w-full px-3 py-2 border border-gray-300 rounded-lg" value="{{ old('harga', $buku->harga) }}" required>
+            <div class="mb-3">
+                <label for="creator" class="form-label">Penulis</label>
+                <input type="text" class="form-control" id="creator" name="creatot" value="{{ $buku->creator }}" required>
             </div>
-
-            <!-- Input untuk Tanggal Terbit -->
-            <div class="mb-4">
-                <label for="tanggal_terbit" class="block text-gray-700 font-bold mb-2">Tanggal Terbit:</label>
-                <input type="date" name="tanggal_terbit" id="tanggal_terbit" class="w-full px-3 py-2 border border-gray-300 rounded-lg" value="{{ old('tanggal_terbit', $buku->tanggal_terbit) }}" required>
+            <div class="mb-3">
+                <label for="price" class="form-label">Harga</label>
+                <input type="number" class="form-control" id="price" name="price" value="{{ $buku->price }}" required>
             </div>
-
-            <!-- Tombol Update -->
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update</button>
+            <div class="mb-3">
+                <label for="publication_date" class="form-label">Tanggal Terbit</label>
+                <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $buku->publication_date }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Buku</button>
 
                 <!-- Tombol Back -->
                 <a href="{{'/bookView'}}" class="text-gray-600 hover:text-gray-800">Back</a>
-            </div>
         </form>
     </div>
 </body>
