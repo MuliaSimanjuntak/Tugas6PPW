@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buku</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('auth.layouts')
 
-</head>
-<body>
+@section('content')
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Dashboard</div>
+            <div class="card-body">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ $message }}
+                    </div>
+                @else
+                    <div class="alert alert-success">
+                        You are logged in!
+                    </div>
+                @endif
+            </div>
+        </div>
     <div class="container mt-5">
         <div class = "mb-5">
             <a href="{{ route('buku.create') }}" class="btn btn-primary float-end">Tambah Buku</a>
@@ -66,6 +75,7 @@
     <h3>Jumlah Buku : {{ $jumlahBuku }}</h3>
     <h3>Total Harga : {{"Rp. ".number_format($totalPrice, 2, ',', '.') }}</h3>
 </div>
-    
-</body>
-</html>
+
+</div>
+</div>
+@endsection
