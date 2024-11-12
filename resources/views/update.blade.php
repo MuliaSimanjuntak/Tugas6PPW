@@ -36,6 +36,18 @@
                 <label for="publication_date" class="form-label">Tanggal Terbit</label>
                 <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $buku->publication_date }}" required>
             </div>
+            <h4>Gambar Galeri:</h4>
+                    <div class="gallery">
+                        @foreach($books->galleries as $gallery)
+                            <img src="{{ asset('storage/galleries/' . $gallery->image) }}" class="rounded w-25" alt="Gallery Image">
+                        @endforeach
+                    </div>
+
+                    <!-- Input for gallery images -->
+                    <div class="form-group">
+                        <label for="gallery_images">Tambah Gambar Galeri:</label>
+                        <input type="file" name="gallery_images[]" class="form-control" multiple>
+                    </div>
             <button type="submit" class="btn btn-primary">Update Buku</button>
 
                 <!-- Tombol Back -->

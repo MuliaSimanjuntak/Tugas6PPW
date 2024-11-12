@@ -13,11 +13,11 @@ class LoginRegisterController extends Controller
     /**
      * Instantiate a new LoginRegisterController instance.
      */
-    public function __construct()
-    {
-        $this->middleware('guest')
-            ->except(['logout', 'dashboard']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')
+    //         ->except(['logout', 'dashboard']);
+    // }
 
     /**
      * Display a registration form.
@@ -53,7 +53,7 @@ class LoginRegisterController extends Controller
         Auth::attempt($credentials);
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard')
+        return redirect()->route('buku.view')
             ->withSuccess('You have successfully registered & logged in!');
     }
 
@@ -84,7 +84,7 @@ class LoginRegisterController extends Controller
             $request->session()->regenerate();
             return redirect()->route('buku.view')
                 ->withSuccess('You have successfully logged in!');
-        }
+        }   
     
         return back()->withErrors([
             'email' => 'Your provided credentials do not match our records.',
@@ -97,16 +97,16 @@ class LoginRegisterController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            return view('auth.dashboard');
-        }
+    // public function dashboard()
+    // {
+    //     if (Auth::check()) {
+    //         return view('auth.dashboard');
+    //     }
 
-        return redirect()->route('login')->withErrors([
-            'email' => 'Please login to access the dashboard.',
-        ])->onlyInput('email');
-    }
+    //     return redirect()->route('login')->withErrors([
+    //         'email' => 'Please login to access the dashboard.',
+    //     ])->onlyInput('email');
+    // }
 
     /**
      * Log out the user from the application.

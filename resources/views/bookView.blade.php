@@ -39,6 +39,7 @@
             <tr>
                 <th>Number</th>
                 <th>ID</th>
+                <th >Gambar</th>
                 <th>Book's Title</th>
                 <th>Cretor</th>
                 <th>Price</th>
@@ -52,6 +53,10 @@
                     <td>{{ $loop->iteration }}</td>
                     {{-- <td>{{ $index+1 }}</td> --}}
                     <td>{{ $book->id }}</td>
+                    <td>
+                    <img src="{{ asset('storage/img/'.$buku->image) }}" class="rounded"
+                    style="width: 150px">
+                </td>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->creator }}</td>
                     <td>{{"Rp. ".number_format($book->price, 2, ',', '.') }}</td>

@@ -32,11 +32,27 @@
                 <label for="publication_date" class="form-label">Tanggal Terbit</label>
                 <input type="date" class="form-control" id="publication_date" name="publication_date">
             </div>
+            <div id="gallery-images" class="form-group">
+            <label for="gallery_images">Tambah Gambar Galeri:</label>
+            <input type="file" name="gallery_images[]" class="form-control mb-2">
+        </div>
+        <button type="button" id="add-gallery" class="btn btn-secondary">Tambah Gambar Galeri</button>
 
 
             <button type="submit" class="btn btn-primary me-2">Simpan</button>
             <a href="{{'/buku'}}" class="btn btn-secondary">Kembali</a>
         </form>
+        <script>
+        // Menambahkan input file galeri gambar dinamis
+        document.getElementById('add-gallery').addEventListener('click', function() {
+            const galleryImagesDiv = document.getElementById('gallery-images');
+            const newInput = document.createElement('input');
+            newInput.setAttribute('type', 'file');
+            newInput.setAttribute('name', 'gallery_images[]');
+            newInput.classList.add('form-control', 'mb-2');
+            galleryImagesDiv.appendChild(newInput);
+        });
+    </script>
     </div>
 </body>
 </html>

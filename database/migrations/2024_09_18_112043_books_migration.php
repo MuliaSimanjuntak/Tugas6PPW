@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('creator');
             $table->integer('price');
             $table->date('publication_date');
+            $table->string('image');
             $table->timestamps();
         });
     }
