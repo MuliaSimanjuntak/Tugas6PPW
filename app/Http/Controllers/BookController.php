@@ -12,11 +12,10 @@ class BookController extends Controller
         // $data_book = book::all()->sortByDesc('id');
 
         $jumlahBuku = book::count();
-        $totalPrice = book::sum('price');
         $batas = 3;
         $data_book = book::orderBy('id', 'desc')->paginate($batas);
         $no = $batas * ($data_book->currentPage() - 1);
-        return view('bookView', compact('data_book', 'jumlahBuku', 'totalPrice'));
+        return view('bookView', compact('data_book', 'jumlahBuku'));
 
     }
 
@@ -119,5 +118,11 @@ class BookController extends Controller
         $no = $batas * ($data_book->currentPage() - 1);
         return view('search', compact('data_book', 'no', 'search', 'jumlahBuku', 'totalPrice'));
     }
+
+    public function review($id){
+        $review = Review::with('book')->first(); 
+        return view('bookView', compact('review'));
+    }
+        
 
 }

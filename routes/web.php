@@ -30,5 +30,11 @@ Route::controller(LoginRegisterController::class)->group(function() {
  Route::post('/logout', 'logout')->name('logout');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+});
+
 
 

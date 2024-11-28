@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    
     <div class="container">
         <h4>Tambah Buku</h4>
         <form method="post" action="{{route('buku.store')}}">
@@ -42,17 +43,34 @@
             <button type="submit" class="btn btn-primary me-2">Simpan</button>
             <a href="{{'/buku'}}" class="btn btn-secondary">Kembali</a>
         </form>
-        <script>
-        // Menambahkan input file galeri gambar dinamis
-        document.getElementById('add-gallery').addEventListener('click', function() {
-            const galleryImagesDiv = document.getElementById('gallery-images');
-            const newInput = document.createElement('input');
-            newInput.setAttribute('type', 'file');
-            newInput.setAttribute('name', 'gallery_images[]');
-            newInput.classList.add('form-control', 'mb-2');
-            galleryImagesDiv.appendChild(newInput);
-        });
-    </script>
     </div>
+    @extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Create Review</h1>
+    <form action="{{ route('reviews.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="book_id" class="form-label">Select Book</label>
+            <select name="book_id" id="book_id" class="form-select" required>
+                <option value="">-- Select a Book --</option>
+                @foreach($books as $book)
+                    <option value="{{ $book->id }}">{{ $book->title }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="review_text" class="form-label">Review Text</label>
+            <textarea name="review_text" id="review_text" class="form-control" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="tags" class="form-label">Tags</label>
+            <input type="text" name="tags[]" id="tags" class="form-control" placeholder="e.g. Adventure, Epic, Fantasy" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+</div>
+@endsection
 </body>
 </html>

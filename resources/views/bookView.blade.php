@@ -54,7 +54,7 @@
                     {{-- <td>{{ $index+1 }}</td> --}}
                     <td>{{ $book->id }}</td>
                     <td>
-                    <img src="{{ asset('storage/img/'.$buku->image) }}" class="rounded"
+                    <img src="{{ asset('storage/img/'.$book->image) }}" class="rounded"
                     style="width: 150px">
                 </td>
                     <td>{{ $book->title }}</td>
@@ -78,7 +78,6 @@
     <div>
     {{ $data_book->links('pagination::bootstrap-5') }}</div>
     <h3>Jumlah Buku : {{ $jumlahBuku }}</h3>
-    <h3>Total Harga : {{"Rp. ".number_format($totalPrice, 2, ',', '.') }}</h3>
 </div>
 
 </div>
